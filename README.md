@@ -1,16 +1,8 @@
-# React + Vite
+# Center for Indian Knowledge Systems (IKS) – NIT Raipur
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the official web portal for the IKS Center at the **National Institute of Technology, Raipur**. This project is designed to bridge the gap between ancient Indian scientific heritage and modern engineering.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The website serves as a digital hub for students, researchers, and faculty to explore the center's initiatives in:
+* **Research** (*Gaveshana*)
+* **Education** (*Shiksha*)
+* The preservation of traditional knowledge.
