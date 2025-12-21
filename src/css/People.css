@@ -1,0 +1,94 @@
+.people-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.team-section {
+    margin-bottom: 60px;
+}
+
+.team-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.people-page.dark .team-section h2 {
+    color: var(--primary-color);
+    border-color: #333;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.person-card {
+    background: var(--card-light);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.people-page.dark .person-card {
+    background: var(--card-dark);
+    border: 1px solid #333;
+}
+
+.person-card:hover {
+    transform: translateY(-5px);
+}
+
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.role {
+    display: block;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.dept {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.contact-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+}

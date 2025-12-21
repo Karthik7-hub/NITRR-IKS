@@ -1,0 +1,108 @@
+.research-page {
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.page-header {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--secondary-color), #2d3748);
+    color: white;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-family: 'Merriweather', serif;
+    /* Or any serif font */
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Grid Layout */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 10%;
+}
+
+/* Card Styling */
+.research-card {
+    background: var(--card-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border-top: 4px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.research-page.dark .research-card {
+    background: var(--card-dark);
+    border: 1px solid #333;
+    border-top: 4px solid var(--primary-color);
+}
+
+.research-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon Box */
+.icon-box {
+    background: rgba(224, 124, 36, 0.1);
+    /* Light Orange bg */
+    color: var(--primary-color);
+    padding: 15px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: inline-flex;
+}
+
+.research-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+}
+
+.research-page.dark .research-card h3 {
+    color: var(--text-dark);
+}
+
+.research-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* Pushes button to bottom */
+}
+
+.research-page.dark .research-card p {
+    color: #aaa;
+}
+
+/* Button */
+.read-more {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    padding: 0;
+    transition: 0.3s;
+}
+
+.read-more:hover {
+    gap: 10px;
+}
