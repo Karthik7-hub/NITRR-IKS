@@ -9,15 +9,6 @@ const PageLayout = ({ title, subtitle, children }) => (
     </div>
 );
 
-export const People = () => (
-    <PageLayout title="Our People" subtitle="Faculty, Coordinators, and Student Volunteers">
-        <div className="grid-layout">
-            <p>Content for Faculty list goes here...</p>
-            <p>Content for Student list goes here...</p>
-        </div>
-    </PageLayout>
-);
-
 export const Academics = () => (
     <PageLayout title="Academics" subtitle="Courses and Curriculum">
         <ul>

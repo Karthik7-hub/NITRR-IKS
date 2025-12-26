@@ -1,59 +1,82 @@
-import Navbar from "../components/Navbar";
-import { User, GraduationCap, Mail } from "lucide-react";
-import "../css/People.css"; // We will create this CSS below
+import React, { useEffect, useState } from "react";
+import PersonCard from "../components/PersonCard";
+import "../css/People.css";
 
-function People({ theme, setTheme }) {
-    const faculty = [
-        { name: "Dr. N.V. Ramana Rao", role: "Patron & Director", dept: "Director, NIT Raipur" },
-        { name: "Dr. R.K. Tripathi", role: "IKS Coordinator", dept: "Department of Humanities" }
-    ];
+function People() {
+    const [people, setPeople] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const students = [
-        { name: "Vana Karthik", role: "Web Developer", dept: "CSE" },
-        { name: "Student Name", role: "Research Volunteer", dept: "Mechanical" }
-    ];
+    useEffect(() => {
+        const fetchPeople = async () => {
+            try {
+                const response = await fetch("https://iks-nitrr-backend.vercel.app/person/getpeople");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const result = await response.json();
+
+                if (result.success) {
+                    setPeople(result.data);
+                }
+            } catch (err) {
+                console.error("Error:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPeople();
+    }, []);
+
+    const chairperson = people.find(p =>
+        p.role.toLowerCase().includes("chairperson") ||
+        p.role.toLowerCase().includes("director")
+    );
+
+    const teamMembers = people.filter(p => p._id !== chairperson?._id);
 
     return (
-        <div className={`people-page ${theme}`}>
-            <Navbar theme={theme} setTheme={setTheme} />
-
+        <div className="people-page">
             <div className="people-container">
-                <h1>Our Team</h1>
 
-                {/* Faculty Section */}
-                <section className="team-section">
-                    <h2><User className="icon" /> Faculty & Advisors</h2>
-                    <div className="people-grid">
-                        {faculty.map((person, index) => (
-                            <div key={index} className="person-card">
-                                <div className="avatar-placeholder">
-                                    <User size={40} />
-                                </div>
-                                <h3>{person.name}</h3>
-                                <span className="role">{person.role}</span>
-                                <p className="dept">{person.dept}</p>
-                                <button className="contact-btn"><Mail size={16} /> Contact</button>
-                            </div>
-                        ))}
+                {loading && (
+                    <div className="people-loader-wrapper">
+                        <div className="people-loader"></div>
+                        <p className="people-loading-text">Loading Team Data...</p>
                     </div>
-                </section>
+                )}
 
-                {/* Student Section */}
-                <section className="team-section">
-                    <h2><GraduationCap className="icon" /> Student Coordinators</h2>
-                    <div className="people-grid">
-                        {students.map((student, index) => (
-                            <div key={index} className="person-card student">
-                                <div className="avatar-placeholder student-avatar">
-                                    <GraduationCap size={40} />
+                {error && <div className="people-error-msg">Error: {error}</div>}
+
+                {!loading && !error && (
+                    <>
+                        {/* 1. CHAIRPERSON SECTION */}
+                        {chairperson && (
+                            <section className="people-chair-section">
+                                <h2 className="people-cat-title">Head of Center</h2>
+                                <div className="people-chair-wrapper">
+                                    <PersonCard data={chairperson} isChairperson={true} />
                                 </div>
-                                <h3>{student.name}</h3>
-                                <span className="role">{student.role}</span>
-                                <p className="dept">{student.dept}</p>
+                            </section>
+                        )}
+
+                        {/* 2. TEAM GRID */}
+                        <section className="people-grid-section">
+                            <h2 className="people-cat-title">Faculty & Associates</h2>
+                            <div className="people-grid">
+                                {teamMembers.length > 0 ? (
+                                    teamMembers.map((person) => (
+                                        <PersonCard key={person._id} data={person} />
+                                    ))
+                                ) : (
+                                    <p>No other members found.</p>
+                                )}
                             </div>
-                        ))}
-                    </div>
-                </section>
+                        </section>
+                    </>
+                )}
             </div>
         </div>
     );

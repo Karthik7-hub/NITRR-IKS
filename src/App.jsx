@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 
 // Import the placeholder pages
-import { People, Academics, Research, Repository, News, Collaborators } from "./pages/Pages";
+import People from "./pages/People";
+import { Academics, Research, Repository, News, Collaborators } from "./pages/Pages";
 
 function App() {
   return (
